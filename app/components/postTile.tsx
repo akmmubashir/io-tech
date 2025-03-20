@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from "react";
-import Link from "next/link";
 import EditPopup from "./editPopup";
 
 interface Post {
@@ -39,9 +38,7 @@ export default function PostTile({ post }: { post: Post }) {
                     <button
                         onClick={() => setIsEditPopup(true)}
                         className="bg-blue-500 text-white w-full rounded p-[8px_10px] hover:bg-blue-600 cursor-pointer text-[16px] font-medium">Edit</button>
-                    <Link
-                        href={`/post/${post?.id}`}
-                        className="bg-gray-700 text-white w-full rounded p-[8px_10px] hover:bg-gray-600 cursor-pointer text-[16px] font-medium whitespace-nowrap">Read More</Link>
+
                 </div>
             </div>
             {isEditPopup && (
