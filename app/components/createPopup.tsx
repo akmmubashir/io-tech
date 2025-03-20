@@ -1,12 +1,6 @@
 "use client"
 import { useState } from "react";
 
-interface Post {
-    id: number;
-    title: string;
-    body: string;
-}
-
 interface CreatePopupProps {
     onClose: () => void;
 }
