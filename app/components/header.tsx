@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import CreatePopup from "./createPopup";
 
 export default function Header() {
+    // State variables for popup
     const [isCreatePopup, setIsCreatePopup] = useState(false);
+    // Check authentication
     useEffect(() => {
         const username = localStorage.getItem("username");
         const password = localStorage.getItem("password");
@@ -12,6 +14,7 @@ export default function Header() {
         }
     }, []);
 
+    // Render the header
     return (
         <React.Fragment>
             <div className="bg-blue-800 w-full flex items-center p-[20px_30px] sticky top-0 z-40 justify-between h-[70px]">
@@ -33,6 +36,7 @@ export default function Header() {
                         className="bg-red-500 text-white text-[16px] font-medium w-fit rounded p-[6px_10px] hover:bg-red-600 cursor-pointer">Logout</button>
                 </div>
             </div>
+            {/* Create popup */}
             {isCreatePopup && (
                 <CreatePopup
                     onClose={() => setIsCreatePopup(false)}

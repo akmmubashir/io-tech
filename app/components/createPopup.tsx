@@ -1,14 +1,17 @@
 "use client"
 import { useState } from "react";
-
+// Interface for CreatePopupProps
 interface CreatePopupProps {
     onClose: () => void;
 }
 
+// CreatePopup component: Handles post creation
 export default function CreatePopup({ onClose }: CreatePopupProps) {
+    // State variables for form inputs
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
 
+    // Function to handle form submission
     const handleCreate = (e: React.FormEvent) => {
         e.preventDefault();
         fetch(`${process.env.POST_API_URL}/posts`, {
@@ -21,17 +24,20 @@ export default function CreatePopup({ onClose }: CreatePopupProps) {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
+            // Success handling
             .then(() => {
                 alert('Post created successfully');
                 onClose();
                 window.location.reload();
             })
+            // Error handling
             .catch((error) => {
                 console.error('Error creating post:', error);
                 alert('Failed to update post');
             });
     }
 
+    // Render the create popup
     return (
         <>
             <div 

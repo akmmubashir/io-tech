@@ -3,10 +3,13 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 export default function LoginComp() {
+    // Router
     const router = useRouter();
+    // State variables for form inputs
     const [username, setUsername] = useState("username");
     const [password, setPassword] = useState("password");
     const [error, setError] = useState("");
+    // Function to handle form submission
     const handleSubmit = (e: React.FormEvent) => {
         if (username === "username" && password === "password") {
             e.preventDefault();
@@ -17,6 +20,7 @@ export default function LoginComp() {
             setError("Invalid username or password");
         }
     };
+    // Render the login component
     return (
         <div className="bg-white w-full h-screen flex items-center justify-center">
             <div className="bg-gray-100 opacity-80 p-8 rounded-lg shadow-lg gap-4 w-[400px] flex flex-col items-center gap-4 border-2 border-gray-500">

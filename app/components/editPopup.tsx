@@ -1,21 +1,24 @@
 "use client"
 import { useState } from "react";
-
+// Interface for Post
 interface Post {
     id: number;
     title: string;
     body: string;
 }
 
+// Interface for EditPopupProps
 interface EditPopupProps {
     post: Post;
     onClose: () => void;
 }
 
 export default function EditPopup({ post, onClose }: EditPopupProps) {
+    // State variables for form inputs
     const [title, setTitle] = useState(post?.title);
     const [body, setBody] = useState(post?.body);
 
+    // Function to handle form submission
     const handleUpdate = (e: React.FormEvent) => {
         e.preventDefault();
         fetch(`${process.env.POST_API_URL}/posts/${post?.id}`, {
@@ -29,17 +32,20 @@ export default function EditPopup({ post, onClose }: EditPopupProps) {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         })
+            // Success handling
             .then(() => {
                 alert('Post updated successfully');
                 onClose();
                 window.location.reload();
             })
+            // Error handling
             .catch((error) => {
                 console.error('Error updating post:', error);
                 alert('Failed to update post');
             });
     }
 
+    // Render the edit popup
     return (
         <>
             <div 
